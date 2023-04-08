@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="quiz-page">
+    <div class="quiz" id="quiz">
+        <div class="quiz-questions" id="quiz-questions"></div>
+        <div class="quiz-indicator" id="quiz-indicator"></div>
+        <div class="quiz-results" id="quiz-results"></div>
+
+        <div class="quiz-controls">
+            <button class="btn-next btn btn-primary" id="btn-next">Далее</button>
+            <button class="btn-restart btn btn-warning" id="btn-restart">Пройти заново</button>
+        </div>
+    </div>
+    <form id="quiz-form" action="/" method="post">
+        <div class="form-group" style="text-align: center;">
+            <p><br>Оставьте свои контакты и мы обязательно с Вами свяжемся!</p>
+        </div>
+        <div class="form-group">
+            <label for="quiz-user">Ваше имя:</label>
+            <input class="form-control" id="quiz-user" name="quizUser" placeholder="Напишите своё имя"
+                   required="required">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Введите email"
+                   required="required">
+            <script>
+                $(document).ready(function () {
+                    $("#email").inputmask("email")
+                });
+            </script>
+        </div>
+        <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Введите номер телефона"
+                   required="required">
+            <script>
+                $(document).ready(function () {
+                    $('#phone').mask('+375 (99) 999-99-99');
+                });
+            </script>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" id="btn-accept-user-data">Отправить заявку</button>
+        </div>
+    </form>
+</div>
+<script src="{% static 'js/quiz_page.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+<script src="{% static 'js/inputmask.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="quiz-creation-page" id="quiz-creation-page">
+    <div class="create-quiz-modal">
+        <h2 class="creation-title">Создание нового квиза</h2>
+        <form class="quiz-create-start">
+            <label for="quiz-title-input">Название квиза</label>
+            <input type="text" id="quiz-title-input" required>
+            <br>
+
+            <label for="quiz-description-input">Описание</label>
+            <textarea id="quiz-description-input" required></textarea>
+            <button class="quiz-create-next-btn">Далее</button>
+        </form>
+        <form class="quiz-create-questions">
+            <div id="quiz-questions-container">
+                <label for="quiz-question-0-input">Вопрос</label>
+
+                <div class="quiz-question">
+                    <input type="text" class="quiz-question-input" id="quiz-question-0-input" required>
+
+                    <div class="quiz-answers-container" data-question-id="0">
+                        <label for="quiz-answer-0-0-input">Ответы</label>
+
+                        <div class="quiz-answer">
+                            <label>
+                                <input type="checkbox" class="quiz-answer-correct" id="quiz-answer-0-0-correct">
+                                Правильный ответ
+                            </label>
+                            <input type="text" class="quiz-answer-input" id="quiz-answer-0-0-input" required>
+                        </div>
+                        <button type="button" class="quiz-add-answer-btn" data-question-id="0">Добавить ответ</button>
+                    </div>
+                </div>
+                <button type="button" class="quiz-add-question-btn">Добавить вопрос</button>
+                <button class="quiz-create-submit-btn">Создать квиз</button>
+            </div>
+        </form>
+        <form class="quiz-create-finish">
+            <h2>Квиз успешно создан. Вы сможете просмотреть его на главной странице, либо в личном кабинете.</h2>
+        </form>
+    </div>
+</div>
+<script src="{% static 'js/create_new_quiz.js'%}"></script>
+{% endblock %}

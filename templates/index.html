@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% csrf_token %}
+<head>
+    <meta charset="UTF-8">
+    <title>Конструктор квизов</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic"
+          media="all">
+    <link href="https://uploads-ssl.webflow.com/5adb18f797c69778e81b7f73/css/marquiz.webflow.e5de9d6b6.min.css"
+          rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <div class="section-header wf-section">
+        <div class="bootstrap-nav">
+            <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease-out-cubic"
+                 data-easing2="ease-in-cubic" role="banner" class="navbar w-nav">
+                <a href="/" class="brand-3 w-nav-brand" aria-label="home">
+                    <img src="https://wowquiz.ru/images/logo-white.png" alt="" class="logo-header">
+                </a>
+                <div class="descript-header w-clearfix">
+                    <div class="descript-text">Конструктор квизов</div>
+                </div>
+                <nav role="navigation" class="nav-menu w-nav-menu">
+                    <a href="/" class="nav-link w-nav-link">Возможности</a>
+                    <a href="/" class="nav-link w-nav-link">Тарифы</a>
+                    <a href="/" class="nav-link w-nav-link">Галерея шаблонов</a>
+                    <a href="/" class="nav-link w-nav-link">Блог</a>
+
+                    {% if user.is_authenticated %}
+                    <button class="login-btn" id="my-account">
+                        Личный кабинет
+                    </button>
+                    <button class="logout-btn" id="logout-btn">
+                        Выйти
+                    </button>
+                    <div class="for-button-navigation">
+                        <a href="/create-new-quiz/" class="button-header-main w-button">Создать Квиз</a>
+                    </div>
+                    {% else %}
+                    <button class="login-btn" id="login-btn">
+                        Вход/регистрация
+                    </button>
+                    <div class="for-button-navigation">
+                        <a href="/registration/" class="button-header-main w-button">Создать Квиз</a>
+                    </div>
+                    {% endif %}
+                </nav>
+                <div class="menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button"
+                     tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+                    <div class="w-icon-nav-menu"></div>
+                </div>
+                <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="modal-auth" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Авторизация</p>
+        <form id="auth-form">
+            <input type="text" class="login-text-input" id="username-login" placeholder="Имя пользователя">
+            <br>
+            <input type="password" class="login-password-input" id="password-login" placeholder="Пароль">
+            <br>
+            <p>
+                <button class="submit-login-button" type="submit">Войти</button>
+                Нет аккаунта?
+                <button class="signup-login-button" id="signup-login-button" type="button">Зарегистрироваться</button>
+            </p>
+        </form>
+    </div>
+</div>
+{% block content %}
+{% endblock %}
+<script src="{% static 'js/buttons.js'%}"></script>
+</body>
+</html>

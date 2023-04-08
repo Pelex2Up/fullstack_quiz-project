@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<form id="register-form">
+  <p style="text-align: center; font-size: 1.5em;">Регистрация нового пользователя:</p>
+  <label for="username">Имя пользователя:</label>
+  <input type="text" id="username" name="username">
+  <br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+  <br>
+
+  <label for="password">Пароль:</label>
+  <input type="password" id="password" name="password">
+  <br>
+
+  <input type="submit" value="Зарегистрироваться">
+</form>
+<script src="{% static 'js/registration.js' %}"></script>
+{% endblock %}
